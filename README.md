@@ -6,13 +6,15 @@ Latest: [v0.1.0-alpha.4](https://github.com/bycontinuity/worktree-releases/relea
 
 ## Install
 
+`<version>` is the tag without the `v`, e.g. `0.1.0-alpha.4`.
+
 | Platform | Asset | Notes |
 |---|---|---|
 | Windows x64 | `worktree-<version>-win-x64.exe` | Unsigned; Windows will show an unknown-publisher warning. |
 | macOS, Apple Silicon | `worktree-<version>-mac-arm64.dmg` | Developer ID signed and notarized. No Intel build. |
 | Linux x86_64 | `worktree-<version>-linux-x86_64.AppImage` | Run `chmod +x` on it first. No ARM build. |
 
-alpha.1 is Windows only; alpha.2 is Windows only; alpha.3 and later cover all three.
+alpha.1 and alpha.2 are Windows only; alpha.3 and later cover all three.
 
 ## Verify a download
 
@@ -24,12 +26,14 @@ gh release download v0.1.0-alpha.4 -R bycontinuity/worktree-releases \
 shasum -a 256 -c --ignore-missing SHA256SUMS-linux-x64
 ```
 
+Prints `worktree-0.1.0-alpha.4-linux-x86_64.AppImage: OK` and exits 0. Swap the file names for your platform.
+
 ## Updating
 
-Builds from alpha.2 on check this repository for new releases (`alpha*.yml` files) and ask before restarting. The original internal `0.1.0-alpha.1` build has updates disabled and must be reinstalled by hand once. Settings > Updates > Check now forces a check.
+Update metadata is the `alpha*.yml` files attached to each release (alpha.2 on). Settings > Updates > Check now forces a check. alpha.1 ships no update metadata; reinstall it by hand.
 
 ## Links
 
 Support: support@tryworktree.com. Privacy: privacy@tryworktree.com. Site: https://tryworktree.com
 
-Run `scripts/check-links.sh` to confirm the links in this README still resolve.
+`sh scripts/check-links.sh` checks that the links above still resolve.
