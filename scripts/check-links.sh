@@ -5,7 +5,7 @@
 fail=0
 [ -f README.md ] || { echo "FAIL README.md not found"; exit 1; }
 # tr strips CR so CRLF files do not send "url\r" to curl
-for u in $(grep -o 'https\?://[^ )>"`]*' README.md | tr -d '\r' | sed 's/[.,]$//' | sort -u); do
+for u in $(grep -o 'https\?://[^ )>"`]*' README.md | tr -d '\r' | sed 's/[.,;:!?]*$//' | sort -u); do
   c=$(curl -sIL -o /dev/null -w '%{http_code}' --max-time 15 "$u")
   case $c in 2*|3*) echo "ok   $c $u";; 000) echo "WARN 000 $u (no response; not counted)";; *) echo "FAIL $c $u"; fail=1;; esac
 done
